@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2019.01.25 20:10:46.395,=C:\Development\Unit1.pas</Transaction>
+    <Transaction>2019.01.25 20:15:18.561,C:\GitHub\WrapDemo\Source\Main.pas=C:\Development\Unit1.pas</Transaction>
+    <Transaction>2019.01.25 20:15:18.561,C:\GitHub\WrapDemo\Source\Main.fmx=C:\Development\Unit1.fmx</Transaction>
+    <Transaction>2019.01.25 20:15:23.035,C:\GitHub\WrapDemo\Source\WrapDemo.dproj=C:\Development\Project1.dproj</Transaction>
+    <Transaction>2019.01.25 21:28:58.794,=C:\GitHub\WrapDemo\Source\Unit1.pas</Transaction>
+    <Transaction>2019.01.25 21:29:20.938,C:\GitHub\WrapDemo\Source\FMX.Helpers.pas=C:\GitHub\WrapDemo\Source\Unit1.pas</Transaction>
+    <Transaction>2019.01.25 21:30:42.866,C:\GitHub\WrapDemo\Source\FMX.PathHelper.pas=C:\GitHub\WrapDemo\Source\FMX.Helpers.pas</Transaction>
+    <Transaction>2019.01.25 21:40:47.301,C:\GitHub\WrapDemo\Source\WarpDemo.dproj=C:\GitHub\WrapDemo\Source\WrapDemo.dproj</Transaction>
+    <Transaction>2019.01.25 21:58:03.803,C:\GitHub\WarpDemo\Source\WarpDemo.dproj=C:\GitHub\WrapDemo\Source\WarpDemo.dproj</Transaction>
+    <Transaction>2019.01.25 21:58:23.954,C:\GitHub\WarpDemo\Source\FMX.PathHelper.pas=C:\GitHub\WrapDemo\Source\FMX.PathHelper.pas</Transaction>
+    <Transaction>2019.01.25 21:58:39.888,C:\GitHub\WarpDemo\Source\Main.pas=C:\GitHub\WrapDemo\Source\Main.pas</Transaction>
+    <Transaction>2019.01.25 21:58:39.888,C:\GitHub\WarpDemo\Source\Main.fmx=C:\GitHub\WrapDemo\Source\Main.fmx</Transaction>
+  </Transactions>
+  <ActiveMobileDevice>   <Pdannert iOSSimulator="iPhone5"/>
+    <NoProfile Android="420011d568902565"/>
+  </ActiveMobileDevice>
+</BorlandProject>
