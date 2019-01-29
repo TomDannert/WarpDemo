@@ -1,26 +1,21 @@
 unit FMX.PathHelper;
 
 { ****************************************************************************
+Copyright (C) 2019 by Thomas Dannert
+Author: Thomas Dannert <thomas@dannert.com>
+Website: www.dannert.com
+TPathHelper for Delphi Firemonkey is free software: you can redistribute it
+and/or modify it under the terms of the GNU Lesser General Public License
+version 3as published by the Free Software Foundation and appearing in the
+included file.
+TPathHelper for Delphi Firemonkey is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public License
+along with Dropbox Client Library. If not, see <http://www.gnu.org/licenses.
+**************************************************************************** }
 
-  Copyright (C) 2019 by Thomas Dannert
-  Author: Thomas Dannert <thomas@dannert.com>
-  Website: www.dannert.com
-
-  TPathHelper for Delphi Firemonkey is free software:
-  you can redistribute it and/or modify it under the terms of
-  the GNU Lesser General Public License version 3
-  as published by the Free Software Foundation and appearing in the
-  included file.
-
-  TPathHelper for Delphi Firemonkey is distributed in the hope
-  that it will be useful, but WITHOUT ANY WARRANTY; without even the
-  implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public License
-  along with Dropbox Client Library. If not, see <http://www.gnu.org/licenses/>.
-
- **************************************************************************** }
 
 interface
 
@@ -69,8 +64,8 @@ var
      end
      else begin
        xy := x * y;
-	     Result.X := a0 + a1 * xy + a2 * x + a3 * y;
-		   Result.Y := b0 + b1 * xy + b2 * x + b3 * y;
+       Result.X := a0 + a1 * xy + a2 * x + a3 * y;
+       Result.Y := b0 + b1 * xy + b2 * x + b3 * y;
      end;
   end;
 
@@ -84,34 +79,34 @@ begin
   YScale  := (2.0 / srcRect.Height);
 
   if APerspective then //Perspective warp
- 	begin
+  begin
     px := ADestPoints[0].X + ADestPoints[1].X - ADestPoints[3].X - ADestPoints[2].X;
     qx := ADestPoints[0].X - ADestPoints[1].X + ADestPoints[3].X - ADestPoints[2].X;
-		rx := ADestPoints[0].X - ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X;
+    rx := ADestPoints[0].X - ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X;
     py := ADestPoints[0].Y + ADestPoints[1].Y - ADestPoints[3].Y - ADestPoints[2].Y;
-		qy := ADestPoints[0].Y - ADestPoints[1].Y + ADestPoints[3].Y - ADestPoints[2].Y;
-		ry := ADestPoints[0].Y - ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y;
+    qy := ADestPoints[0].Y - ADestPoints[1].Y + ADestPoints[3].Y - ADestPoints[2].Y;
+    ry := ADestPoints[0].Y - ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y;
     num := px * qy - qx * py;
-    if Num = 0 then Num := 0.00000001; //avoid divison by zero
+    if num = 0 then num := 0.00000001; //avoid divison by zero
     if px = 0 then px := 0.0000001; //avoid divison by zero
     c1 := (px * ry - rx * py) / num;
     c0 := (rx - qx * c1) / px;
     a1 := ((ADestPoints[0].X + ADestPoints[1].X) * c0 + (ADestPoints[0].X - ADestPoints[1].X) * (c1 - 1.0)) / 2.0;
-		a0 := ((ADestPoints[1].X + ADestPoints[2].X) * (c0 + 1.0) + (- ADestPoints[1].X + ADestPoints[2].X) * c1) / 2.0 - a1;
-		a2 := ((- ADestPoints[3].X + ADestPoints[2].X) * c0 + (ADestPoints[3].X + ADestPoints[2].X) * (c1 + 1.0)) / 2.0 - a0;
+    a0 := ((ADestPoints[1].X + ADestPoints[2].X) * (c0 + 1.0) + (- ADestPoints[1].X + ADestPoints[2].X) * c1) / 2.0 - a1;
+    a2 := ((- ADestPoints[3].X + ADestPoints[2].X) * c0 + (ADestPoints[3].X + ADestPoints[2].X) * (c1 + 1.0)) / 2.0 - a0;
     b1 := ((ADestPoints[0].Y + ADestPoints[1].Y) * c0 + (ADestPoints[0].Y - ADestPoints[1].Y) * (c1 - 1.0)) / 2.0;
-		b0 := ((ADestPoints[1].Y + ADestPoints[2].Y) * (c0 + 1.0) + (- ADestPoints[1].Y + ADestPoints[2].Y) * c1) / 2.0 - b1;
-		b2 := ((- ADestPoints[3].Y + ADestPoints[2].Y) * c0 + (ADestPoints[3].Y + ADestPoints[2].Y) * (c1 + 1.0)) / 2.0 - b0;
+    b0 := ((ADestPoints[1].Y + ADestPoints[2].Y) * (c0 + 1.0) + (- ADestPoints[1].Y + ADestPoints[2].Y) * c1) / 2.0 - b1;
+    b2 := ((- ADestPoints[3].Y + ADestPoints[2].Y) * c0 + (ADestPoints[3].Y + ADestPoints[2].Y) * (c1 + 1.0)) / 2.0 - b0;
   end
-	else begin  //Bilinear warp
+  else begin  //Bilinear warp
     a0 := (  ADestPoints[0].X + ADestPoints[1].X + ADestPoints[3].X + ADestPoints[2].X) / 4.0;
-		a1 := (  ADestPoints[0].X - ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X) / 4.0;
-		a2 := (- ADestPoints[0].X + ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X) / 4.0;
-		a3 := (- ADestPoints[0].X - ADestPoints[1].X + ADestPoints[3].X + ADestPoints[2].X) / 4.0;
+    a1 := (  ADestPoints[0].X - ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X) / 4.0;
+    a2 := (- ADestPoints[0].X + ADestPoints[1].X - ADestPoints[3].X + ADestPoints[2].X) / 4.0;
+    a3 := (- ADestPoints[0].X - ADestPoints[1].X + ADestPoints[3].X + ADestPoints[2].X) / 4.0;
     b0 := (  ADestPoints[0].Y + ADestPoints[1].Y + ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
-		b1 := (  ADestPoints[0].Y - ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
-		b2 := (- ADestPoints[0].Y + ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
-		b3 := (- ADestPoints[0].Y - ADestPoints[1].Y + ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
+    b1 := (  ADestPoints[0].Y - ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
+    b2 := (- ADestPoints[0].Y + ADestPoints[1].Y - ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
+    b3 := (- ADestPoints[0].Y - ADestPoints[1].Y + ADestPoints[3].Y + ADestPoints[2].Y) / 4.0;
   end;
   //Create new Path
   APath.Clear;
